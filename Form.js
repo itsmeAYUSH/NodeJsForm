@@ -1,7 +1,19 @@
-const http = require("http");
-const routes = require('./routes');
+// const http = require("http");
 
-console.log(routes.someText)
-const server = http.createServer(routes.handler);
+const express = require("express");
+const Form = express();
 
-server.listen(3000);
+Form.use((req, res, next) => {
+  console.log("sup");
+  next();
+});
+
+Form.use((req, res, next) => {
+  console.log("sup again");
+    res.send("<h1>Hello from expressJs</h1>");
+//   res.send({ key1: "value" });
+});
+
+// const server = http.createServer(app);
+// server.listen(3000);
+Form.listen(3000);
